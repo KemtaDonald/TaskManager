@@ -1,0 +1,3 @@
+com/example/taskmanager/AppTest.class
+com/example/taskmanager/controller/TaskControllerTest.class
+com/example/taskmanager/integration/TaskIntegrationTest.class
