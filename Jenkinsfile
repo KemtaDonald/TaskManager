@@ -1,7 +1,7 @@
 pipeline {
   agent {
     node {
-      label 'AWS EC2 AGENT1'
+      label 'AGENT1'
     }
 
   }
