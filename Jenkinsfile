@@ -2,17 +2,20 @@ pipeline {
   agent none
   stages {
     stage('Build') {
-      agent {label 'AGENT1'}
+      agent {label 'agent-permanent'}
       steps {
-        echo 'first stage build'
-        echo 'First build'
+        checkout scm
+        echo '=== Build: Génération du .jar ==='
+        sh 'mvn clean package -DskipTests'
+        archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
       }
     }
     stage('test') {
-      agent {label 'agent-permanent'}
+      agent {label 'AGENT1'}
       steps {
-        sh 'echo first stage build'
-        sh 'sleep 4'
+        checkout scm
+        echo '=== Tests: unitaires + intégration ==='
+        sh 'mvn test verify'
       }
     }
     stage('Deploy') {
