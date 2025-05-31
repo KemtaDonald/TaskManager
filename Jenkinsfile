@@ -19,7 +19,7 @@ pipeline {
       agent {label 'agent-permanent'}
       steps {
         sh 'sleep 5'
-        sh 'placeholder'
+        sh 'echo placeholder'
       }
     }
 
