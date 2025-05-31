@@ -1,5 +1,8 @@
 pipeline {
   agent none
+  environment{
+    DEPLOY='placeholder'
+  }
   stages {
     stage('Build') {
       agent {label 'agent-permanent'}
@@ -16,13 +19,14 @@ pipeline {
         checkout scm
         echo '=== Tests: unitaires + intégration ==='
         sh 'mvn test verify'
+        junit '/target/surefire-reports/**/TEST*.xml'
       }
     }
     stage('Deploy') {
       agent {label 'agent-permanent'}
       steps {
         sh 'sleep 4'
-        sh 'echo placeholder'
+        sh "echo $DEPLOY"
       }
     }
 
