@@ -12,13 +12,13 @@ pipeline {
       agent {label 'agent-permanent'}
       steps {
         sh 'echo first stage build'
-        sh 'sleep 5'
+        sh 'sleep 4'
       }
     }
     stage('Deploy') {
       agent {label 'agent-permanent'}
       steps {
-        sh 'sleep 5'
+        sh 'sleep 4'
         sh 'echo placeholder'
       }
     }
